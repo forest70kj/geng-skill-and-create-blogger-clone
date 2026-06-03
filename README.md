@@ -38,20 +38,21 @@ This repository is not for:
 
 | Skill | Use It For |
 | --- | --- |
-| `geng.skill` | Controlled commentary writing with source retrieval, case-bite extraction, opening/body/ending staging, locked-part integrity, and human-read anti-AI checks. |
-| `create-blogger-clone-v2` | Building anonymized creator-specific writing workflow Skills from user-owned or licensed examples, staged review, micro-edits, and release scans. |
+| [`geng.skill`](skills/geng.skill) | Controlled commentary writing with source retrieval, case-bite extraction, opening/body/ending staging, locked-part integrity, and human-read anti-AI checks. |
+| [`create-blogger-clone-v2`](skills/create-blogger-clone-v2) | Building anonymized creator-specific writing workflow Skills from user-owned or licensed examples, staged review, micro-edits, and release scans. |
 
 ## Repository Layout
 
 ```text
-geng.skill/
-  SKILL.md
-  skill.json
+skills/
+  geng.skill/
+    SKILL.md
+    skill.json
 
-create-blogger-clone-v2/
-  SKILL.md
-  skill.json
-  templates/
+  create-blogger-clone-v2/
+    SKILL.md
+    skill.json
+    templates/
 
 docs/
   anonymization_policy.md
@@ -63,6 +64,8 @@ examples/
   anonymized_case_bite.md
   anonymized_micro_edit_packet.md
   anonymized_review_packet.md
+  practical_geng_opening_workflow.md
+  practical_obsidian_assisted_workflow.md
 ```
 
 ## Installation
@@ -77,8 +80,8 @@ cd geng-skill-and-create-blogger-clone
 Copy the Skill folder you want into your Codex skills directory:
 
 ```bash
-cp -R geng.skill ~/.codex/skills/
-cp -R create-blogger-clone-v2 ~/.codex/skills/
+cp -R skills/geng.skill ~/.codex/skills/
+cp -R skills/create-blogger-clone-v2 ~/.codex/skills/
 ```
 
 Then start a new Codex session and call the Skill by name.
@@ -124,6 +127,8 @@ reject: [why]
 
 The Skill should not move to the body until the opening is approved or revised.
 
+See a fuller copy-paste example in [`examples/practical_geng_opening_workflow.md`](examples/practical_geng_opening_workflow.md).
+
 ## Quick Start: Use `create-blogger-clone-v2`
 
 Use `create-blogger-clone-v2` when you want to build a new writing workflow Skill from examples that you own, control, or have permission to use.
@@ -150,6 +155,13 @@ source registration
 -> safety scan
 -> reviewable package export
 ```
+
+## Practical Examples
+
+Start with these if you are new to the repository:
+
+- [`examples/practical_geng_opening_workflow.md`](examples/practical_geng_opening_workflow.md): a realistic opening-only workflow with source notes, expected case bite, candidate output shape, and review responses.
+- [`examples/practical_obsidian_assisted_workflow.md`](examples/practical_obsidian_assisted_workflow.md): a workflow showing how to pair `geng.skill` with a small Obsidian joke/meme knowledge set.
 
 ## Default Writing Workflow
 

@@ -4,10 +4,12 @@ Initial public anonymized release.
 
 ## Included
 
-- `geng.skill`
-- `create-blogger-clone-v2`
+- `skills/geng.skill`
+- `skills/create-blogger-clone-v2`
 - workflow docs
 - anonymized examples
+- practical usage examples
+- Obsidian knowledge base setup guide
 - MIT License
 - privacy / anonymization policy
 

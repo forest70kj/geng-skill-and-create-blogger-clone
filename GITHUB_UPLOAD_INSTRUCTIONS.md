@@ -22,3 +22,5 @@ git push -u origin main
 ```
 
 Do not push before reviewing `PUBLIC_RELEASE_SENSITIVE_SCAN.md`.
+
+After upload, confirm that the `skills/` directory appears at the repository root.
