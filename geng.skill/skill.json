@@ -1,0 +1,9 @@
+{
+  "name": "geng.skill",
+  "display_name": "geng.skill",
+  "type": "writing",
+  "version": "1.0.0-public",
+  "description": "An anonymized controlled writing Skill for piecewise commentary generation using source retrieval, staged review, micro-edits, and human-read anti-AI gates.",
+  "default_entry": "SKILL.md",
+  "license": "MIT"
+}

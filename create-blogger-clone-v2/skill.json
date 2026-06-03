@@ -1,0 +1,9 @@
+{
+  "name": "create-blogger-clone-v2",
+  "display_name": "create-blogger-clone-v2",
+  "type": "writing-workflow",
+  "version": "2.0.0-public",
+  "description": "A reusable workflow Skill for building creator-specific writing Skills from user-provided examples, staged review, and anonymized method extraction.",
+  "default_entry": "SKILL.md",
+  "license": "MIT"
+}
