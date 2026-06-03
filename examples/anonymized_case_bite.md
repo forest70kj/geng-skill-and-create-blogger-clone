@@ -1,4 +1,4 @@
-# Anonymized Case Bite
+# Anonymized Case Bite / 匿名化 Case Bite
 
 ```yaml
 case_id: case_001
@@ -16,3 +16,6 @@ forbidden_shortcuts:
   - ungrounded slang
 ```
 
+This example shows the kind of compact brief the Skill should create before drafting.
+
+这个例子展示的是：Skill 写正文前应该先提炼出的简短 case brief。它不是完整文章，也不是私人样本。

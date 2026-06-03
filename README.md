@@ -1,47 +1,52 @@
 # geng-skill-and-create-blogger-clone
 
-Two public, anonymized Codex writing workflow Skills:
+两个公开、匿名化的 Codex 写作 workflow Skills:
 
 - `geng.skill`
 - `create-blogger-clone-v2`
 
-This repository is for people who want a controlled way to write commentary-style drafts with source grounding, staged review, micro-edits, and anti-AI self-checks.
+This repo is for people who want controlled commentary-style writing with source grounding, staged review, micro-edits, and anti-AI self-checks.
 
-It is not a private corpus dump. It does not include creator transcripts, channel names, proprietary sample scripts, local paths, API keys, tokens, or private generated archives.
+简单说：它不是让 AI 一口气写完整文章，而是让 AI 先读材料、先提炼 case bite，再一段一段写，用户每一步都可以 review / micro-edit / lock。
 
-## What This Is
+## What This Is / 这是什么
 
-This package gives you reusable Skill workflows for:
+这个 package 提供的是可复用的 Skill workflow，核心能力包括：
 
-- turning source material into a short "case bite" before drafting
-- generating only one section at a time, such as opening, body, or ending
-- keeping user-approved sections locked and byte-identical
-- using user micro-edits to improve future drafts
-- checking whether the output sounds like human commentary or clean AI analysis
-- exporting anonymized, reviewable creator-style workflow packages
+- source retrieval: 先找材料，不凭感觉写
+- case bite extraction: 写之前先提炼这个选题真正的冲突点
+- opening/body/ending staging: 开头、正文、结尾分段生成
+- locked-part integrity: 用户确认过的部分不偷偷改
+- micro-edit learning: 用户的小修改会变成下一轮写作规则
+- human-read anti-AI gate: 检查它是不是又写成了干净但机械的 AI 分析
+- reviewable export: 可以导出匿名化、可检查的 Skill package
 
 The focus is transferable writing method: structure, rhythm, joke mechanics, evidence handling, revision criteria, and review gates.
 
-## What This Is Not
+重点不是“模仿某个人”，而是抽取可以迁移的写作方法：结构、节奏、梗的机制、证据怎么用、怎么改稿、怎么判断不像 AI。
 
-This repository is not for:
+## What This Is Not / 这不是什么
 
-- impersonating a creator
-- copying long source passages
-- publishing private transcripts
-- bypassing user review
-- automatically generating finished scripts without checkpoints
-- treating any sample as golden by default
-- replacing human judgment with benchmark scores
+这个仓库不用于：
 
-## Included Skills
+- impersonating a creator / 冒充某个创作者
+- copying long source passages / 复制长篇原文
+- publishing private transcripts / 发布私人转录稿
+- bypassing user review / 绕过用户审稿
+- one-shot full-script generation / 默认一口气生成完整稿
+- treating samples as golden by default / 默认把样本当 golden
+- replacing human judgment with benchmark scores / 用分数替代人的判断
 
-| Skill | Use It For |
+It is not a private corpus dump. It does not include creator transcripts, channel names, proprietary sample scripts, local paths, API keys, tokens, or private generated archives.
+
+## Included Skills / 包含的 Skill
+
+| Skill | 用途 / Use It For |
 | --- | --- |
-| [`geng.skill`](skills/geng.skill) | Controlled commentary writing with source retrieval, case-bite extraction, opening/body/ending staging, locked-part integrity, and human-read anti-AI checks. |
-| [`create-blogger-clone-v2`](skills/create-blogger-clone-v2) | Building anonymized creator-specific writing workflow Skills from user-owned or licensed examples, staged review, micro-edits, and release scans. |
+| [`geng.skill`](skills/geng.skill) | 用于 controlled commentary writing。它会做 source retrieval、case-bite extraction、opening/body/ending staging、locked-part integrity 和 human-read anti-AI checks。 |
+| [`create-blogger-clone-v2`](skills/create-blogger-clone-v2) | 用于从用户自己拥有或有授权的 examples 中，搭建匿名化 creator-style writing workflow Skill。重点是 source registration、eval split、micro-edit learning 和 release scan。 |
 
-## Repository Layout
+## Repository Layout / 仓库结构
 
 ```text
 skills/
@@ -68,7 +73,9 @@ examples/
   practical_obsidian_assisted_workflow.md
 ```
 
-## Installation
+`skills/` 里是真正可以复制进 Codex 的 Skill 文件夹。`docs/` 是说明文档。`examples/` 是可以直接照抄改写的使用示例。
+
+## Installation / 安装
 
 Clone or download this repository:
 
@@ -84,31 +91,41 @@ cp -R skills/geng.skill ~/.codex/skills/
 cp -R skills/create-blogger-clone-v2 ~/.codex/skills/
 ```
 
-Then start a new Codex session and call the Skill by name.
+然后开启一个新的 Codex session，直接点名调用 Skill:
+
+```text
+Use geng.skill.
+```
+
+或者：
+
+```text
+Use create-blogger-clone-v2.
+```
 
 If your Codex setup uses a different custom skills folder, copy the Skill folder there instead. The important part is that each folder keeps its own `SKILL.md` and `skill.json`.
 
-## Quick Start: Use `geng.skill`
+## Quick Start: `geng.skill` / 快速开始
 
-Use `geng.skill` when you already know the topic or source object and want to generate a controlled commentary draft.
+`geng.skill` 适合你已经有一个 topic / source object，并且想写一篇 commentary-style draft，但不想让 AI 一口气写完整稿的时候。
 
-Example prompt:
+Example prompt / 示例 prompt:
 
 ```text
 Use geng.skill.
 
 I want an opening_only pass for this case:
-- topic: [your topic]
-- source notes: [paste short source notes or give local file paths]
-- main complaint: [what feels wrong, funny, confusing, or worth attacking]
-- audience position: [new viewer, returning viewer, fan, buyer, comment section, etc.]
+- topic: [your topic / 你的选题]
+- source notes: [paste short source notes or give local file paths / 粘贴材料摘要或给本地文件路径]
+- main complaint: [what feels wrong, funny, confusing, or worth attacking / 你想吐槽的核心点]
+- audience position: [new viewer, returning viewer, fan, buyer, comment section, etc. / 观众位置]
 
 Before writing, create a case bite brief.
 Then generate only opening candidates.
 Stop and wait for my review before writing the body.
 ```
 
-Expected output:
+Expected output / 预期输出:
 
 ```text
 case bite brief
@@ -117,23 +134,27 @@ case bite brief
 -> user decision gate
 ```
 
-You should then reply with one of these:
+你接下来可以这样回复：
 
 ```text
 opening_good
-usable_but_needs_micro_edit: [your edit]
-reject: [why]
+usable_but_needs_micro_edit: [your edit / 你的小修改]
+reject: [why / 为什么不行]
 ```
 
 The Skill should not move to the body until the opening is approved or revised.
 
-See a fuller copy-paste example in [`examples/practical_geng_opening_workflow.md`](examples/practical_geng_opening_workflow.md).
+它不应该在开头还没确认前继续写正文。这个分段机制是核心。
 
-## Quick Start: Use `create-blogger-clone-v2`
+Full copy-paste example / 完整可复制示例：
 
-Use `create-blogger-clone-v2` when you want to build a new writing workflow Skill from examples that you own, control, or have permission to use.
+- [`examples/practical_geng_opening_workflow.md`](examples/practical_geng_opening_workflow.md)
 
-Example prompt:
+## Quick Start: `create-blogger-clone-v2` / 快速开始
+
+`create-blogger-clone-v2` 适合你想从自己拥有、自己写的、或明确有授权的 examples 中，搭建一个新的 writing workflow Skill。
+
+Example prompt / 示例 prompt:
 
 ```text
 Use create-blogger-clone-v2.
@@ -143,7 +164,7 @@ First help me register sources, split an eval set, and extract transferable meth
 Do not include private source text in any public package.
 ```
 
-Expected workflow:
+Expected workflow / 预期流程：
 
 ```text
 source registration
@@ -156,14 +177,14 @@ source registration
 -> reviewable package export
 ```
 
-## Practical Examples
+## Practical Examples / 实用示例
 
-Start with these if you are new to the repository:
+如果你第一次用，建议先看这两个：
 
-- [`examples/practical_geng_opening_workflow.md`](examples/practical_geng_opening_workflow.md): a realistic opening-only workflow with source notes, expected case bite, candidate output shape, and review responses.
-- [`examples/practical_obsidian_assisted_workflow.md`](examples/practical_obsidian_assisted_workflow.md): a workflow showing how to pair `geng.skill` with a small Obsidian joke/meme knowledge set.
+- [`examples/practical_geng_opening_workflow.md`](examples/practical_geng_opening_workflow.md): 一个 realistic opening-only workflow，包含 source notes、expected case bite、candidate output shape 和 review responses。
+- [`examples/practical_obsidian_assisted_workflow.md`](examples/practical_obsidian_assisted_workflow.md): 展示如何把 `geng.skill` 和少量 Obsidian jokes / memes / negative rules 搭配使用。
 
-## Default Writing Workflow
+## Default Writing Workflow / 默认写作流程
 
 The default workflow is intentionally staged:
 
@@ -183,17 +204,25 @@ source retrieval
 -> final user decision
 ```
 
-Full-script generation is not the default. This is deliberate. Staging makes it easier to catch generic AI phrasing before it infects the whole draft.
+Full-script generation is not the default. This is deliberate.
 
-## Author's View: Pair This With an Obsidian Knowledge Base
+默认不一口气写完整稿，这是有意设计的。因为 AI 最容易在“一口气写完”的时候变成那种很顺、很干净、但是没有人味的分析文。
+
+Staging makes it easier to catch generic AI phrasing before it infects the whole draft.
+
+## Author's View / 作者观点：搭配 Obsidian 知识库
 
 My recommended setup is to use these Skills together with an Obsidian vault.
 
-The idea is simple: build a large local knowledge base of jokes, memes, analogies, reusable complaint structures, scene-pressure patterns, and negative examples. When you use the Skill to write an article or script, ask it to reference the relevant Obsidian notes while drafting.
+我的建议是：把这个 Skill 和 Obsidian 知识库一起用。
 
-This can greatly reduce the mechanical feeling of AI writing. Instead of asking the model to invent flavor from nothing, you give it a living bank of concrete joke mechanics and reusable patterns. The Skill still has to write a new draft, but it can lean on your own curated taste.
+思路很简单：你可以在 Obsidian 里搭一个很大的本地知识库，专门存放 jokes、memes、analogies、complaint structures、scene-pressure patterns、negative examples。写文章或写视频稿时，让 Skill 边写边参考这些相关笔记。
 
-Suggested Obsidian layout:
+This can greatly reduce the mechanical feeling of AI writing.
+
+这样能明显减少 AI 写东西的机械感。因为你不是让模型从 0 开始硬编“风味”，而是给它一个你自己长期积累出来的梗库、段子库、类比库和负面规则库。Skill 仍然要写新稿，但它可以借用你自己的审美和素材机制。
+
+Suggested Obsidian layout / 建议 Obsidian 结构:
 
 ```text
 ObsidianVault/
@@ -219,7 +248,7 @@ ObsidianVault/
     banned-clean-thesis-endings.md
 ```
 
-Useful note format:
+Useful note format / 笔记格式:
 
 ```markdown
 ---
@@ -229,26 +258,30 @@ status: reusable
 risk: low
 ---
 
-# Pattern Name
+# Pattern Name / 模式名
 
-## What It Does
+## What It Does / 它解决什么
 
 Explain the joke or meme mechanism in plain language.
+用普通话解释这个梗、段子或机制到底在干什么。
 
-## When To Use
+## When To Use / 什么时候用
 
 Describe the kind of scene, topic, or audience pressure where this pattern fits.
+说明它适合什么场景、选题或观众压力。
 
-## Example Shape
+## Example Shape / 示例骨架
 
 Use a short anonymized structure, not a copied private paragraph.
+写一个短的匿名化结构，不要复制私人原文。
 
-## Do Not Use When
+## Do Not Use When / 不适合什么时候用
 
 List boundaries and failure cases.
+列出边界和失败场景。
 ```
 
-Prompt example:
+Prompt example / 调用示例:
 
 ```text
 Use geng.skill.
@@ -260,25 +293,33 @@ Before writing, reference these Obsidian notes:
 
 Use them as reusable mechanics, not as text to copy.
 Generate opening_only for this case:
-[your source notes]
+[your source notes / 你的材料摘要]
 ```
 
-Best practice: do not dump your whole vault into one prompt. Give the Skill a small, relevant set of notes, usually 3 to 8 files. Ask it to explain which note influenced which draft choice.
+Best practice: do not dump your whole vault into one prompt. Give the Skill a small, relevant set of notes, usually 3 to 8 files.
 
-For a deeper setup guide, see [`docs/obsidian_knowledge_base.md`](docs/obsidian_knowledge_base.md).
+最佳做法：不要一次把整个 Obsidian vault 塞进去。每次只给 3 到 8 个最相关的 notes，并要求它说明哪条 note 影响了哪个 draft choice。
 
-## How To Review Output
+Deeper setup guide / 更详细指南：
+
+- [`docs/obsidian_knowledge_base.md`](docs/obsidian_knowledge_base.md)
+
+## How To Review Output / 怎么审稿
 
 When the Skill gives you a draft, do not only ask whether the facts are correct. Also ask:
 
-- Does it sound like a person reacting, or like an organized essay?
-- Is the first paragraph case-specific?
-- Does every paragraph add a new pressure?
-- Are jokes explaining the complaint, or just decorating it?
-- Did the ending summarize too cleanly?
-- Could this paragraph work for another topic by swapping names?
+拿到草稿后，不要只检查事实对不对，还要检查：
+
+- Does it sound like a person reacting, or like an organized essay? / 像人在吐槽，还是像整理好的作文？
+- Is the first paragraph case-specific? / 第一段是不是足够具体？
+- Does every paragraph add a new pressure? / 每一段有没有新增压力？
+- Are jokes explaining the complaint, or just decorating it? / 梗是在解释问题，还是只是在装饰？
+- Did the ending summarize too cleanly? / 结尾是不是总结得太干净？
+- Could this paragraph work for another topic by swapping names? / 换个名字还能用吗？如果能，就太泛了。
 
 If something feels AI-written, give a micro-edit:
+
+如果某句话有 AI 味，直接给 micro-edit：
 
 ```text
 This line is too analytical:
@@ -290,17 +331,21 @@ Rewrite toward this pressure:
 
 The useful lesson is not the exact sentence. The useful lesson is: concrete mechanism beats abstract critique.
 
-## Public Release Safety
+真正有价值的不是这句原文，而是这个规则：具体机制比抽象评论更有用。
+
+## Public Release Safety / 公开发布安全边界
 
 Before publishing a Skill package made with this workflow:
 
-- remove private transcripts
-- remove creator names and channel names unless you have permission
-- remove long recognizable source passages
-- remove local paths, account names, API keys, and tokens
-- keep examples short and anonymized
-- run a sensitive-content scan
-- keep user review gates visible
+发布任何由这个 workflow 生成的 Skill package 前，请确认：
+
+- remove private transcripts / 删除私人转录稿
+- remove creator names and channel names unless you have permission / 未授权就删除创作者名和频道名
+- remove long recognizable source passages / 删除长篇可识别原文
+- remove local paths, account names, API keys, and tokens / 删除本地路径、账号名、API key 和 token
+- keep examples short and anonymized / 示例保持短、匿名化
+- run a sensitive-content scan / 做敏感内容扫描
+- keep user review gates visible / 保留用户审稿 gate
 
 This repository's public release scan is included in:
 
@@ -309,6 +354,6 @@ PUBLIC_RELEASE_SENSITIVE_SCAN.md
 PUBLIC_RELEASE_SENSITIVE_SCAN.json
 ```
 
-## License
+## License / 许可证
 
 MIT License.
